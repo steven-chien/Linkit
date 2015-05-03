@@ -1,8 +1,11 @@
 Meteor.publish('myUser', function() {
 	return MyUsers.find();
 });
-Meteor.publish('LinkitterList', function() {
-	return LinkitterList.find();
+Meteor.publish('LinkitterProfile', function() {
+	if(this.userId) {
+		console.log(this.userId);
+		return LinkitterProfile.find({ user_id: this.userId });
+	}
 });
 Meteor.publish('pmtasks', function() {
 	return pmtasks.find();
