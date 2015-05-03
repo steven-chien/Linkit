@@ -1,0 +1,26 @@
+<template name="homeproject">
+        <ul class="list-group">
+            <div class="list-group-item">
+                <table border="0">
+                    <tr>
+                        <td width="100%" rowspan="2" valign="top">
+                            <div><a href="/individualproj/{{_id.toHexString}}"><h4>{{name}}</h4></a></div>
+                            <div>This is a programming project.</div>
+                        </td>
+                        <td width="50" rowspan="2" valign="top">
+                            <div class="project-deadline">Deadline</div>
+                            <div class="priject-deadline-date">{{Deadline}}</div>
+                        </td>
+                    </tr>
+                </table>
+                <div class="input-group">
+                    <div class="progress"><!-- Draft project plan -->
+                        <div class="progress-bar"
+                            role="progressbar"
+                            style="width: {{progress}};"></div>
+                    </div>
+                    <span class="input-group-addon">{{progress}}</span>
+                </div>
+            </div>
+        </ul>
+</template>

@@ -1,0 +1,153 @@
+@def-page-width: 964px;
+@def-padding: 30px;
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html, 
+body {
+	height:100%;
+	background-color: #f1f1f1;	
+}
+
+body {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	color: #3a3a3a;
+}
+
+#container {
+	max-width: @def-page-width;
+	margin:15px auto -60px auto;
+	background-color: #fafafa;
+	min-height: 100%;
+	
+	section.spacer {
+		display: block;
+		background-color:#f1f1f1;
+		height:30px;
+	}
+
+	nav {
+		background-color: #44BB44;
+		min-height: 48px;
+		padding: 0 30px;
+		border-bottom: 1px solid #cfcfcf;
+		margin-bottom: 30px;
+		ul {
+			list-style-type: none;
+			li {
+				display: inline-block;
+				&.active {
+					background-color: darken(#44BB44, 5%);
+				}
+				a {
+					color: #fff;
+					display:block;
+					text-decoration: none;
+					padding: 16px 32px;
+					outline: 0 none;
+					font-weight: 700;
+					&:active,
+					&:hover {
+						background-color: darken(#44BB44, 5%);
+					}
+				}
+			}
+		}
+	}
+	
+	.section-heading {
+		background-color: #44DD44;
+		color: #fff;
+		font-size: 1.75em;
+		padding: 15px 30px;
+	}
+	.content {
+		display:block;
+		padding: 0 30px 60px 30px;
+
+		pre {
+			display:block;
+			background-color: #4a4a4a;
+			min-width: 300px;
+			margin: 15px 30px 15px 15px;
+			padding: 7px 15px;
+			font-family: monospace;
+			border: 1px solid #4a4a4a;
+			color: #fff;
+			clear:right;
+		}
+
+		ul {
+			&.packages-list {
+				margin-left: 30px;
+				margin-bottom: 15px;
+				li {
+					padding: 5px 0;
+				}
+			}
+			&.link-collection {
+				list-style-type: none;	
+				li {
+					padding: 10px 0;
+				}
+			}
+			
+			li {
+				line-height: 1.4;
+			}
+		}
+		
+	}
+}
+
+footer {
+	margin: 0 auto;
+	height:60px;
+	background-color: #f1f1f1;
+	max-width: 964px;
+	padding: 0 30px;
+	text-align: center;
+	span {
+		display:block;
+		padding-top: 20px;
+	}
+}
+
+.conn-lost {
+	top: 15px;
+	right: 15px;
+	position: absolute;
+	color: #fff;
+	background-color: rgba(0,0,0, 0.6);
+	border: 1px solid #fafafa;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	padding: 15px;
+	box-shadow: 3px 3px 7px 0 #999;
+}
+
+h1,h2,h3 {
+	display: block;
+	font-weight: normal;
+	margin-top: 0.375em;
+	margin-bottom: 0.5em;
+}
+
+h1 { font-size: 1.875em; }
+h2 { font-size: 1.66667em; }
+h3 { font-size: 1.45em; }
+
+p {
+	line-height: 1.4;
+	margin-bottom: 1em; 
+}
+
+h2.bordered {
+	padding-bottom: 0.25em;
+	border-bottom: 1px solid #cfcfcf;
+	padding-top: 15px;
+}

@@ -1,0 +1,173 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.navbar-static-top {
+    margin-bottom: 19px;
+}
+.navbar-menubtn-setleft {
+    float: left!important;
+    margin-left: 10px!important;
+}
+.navbar-brand-center {
+    left: 50%!important;
+    margin-left: -51px!important;
+    position: absolute!important;
+}
+.project-list-progress-text {
+    font-size: 12px!important;
+}
+.progress {
+    border-bottom-right-radius: 0!important;
+    border-top-right-radius: 0!important;
+    display: table-cell!important;
+}
+.progress-bar {
+    height: 28px!important;
+}
+.no-margin {
+    margin: 0!important;
+}
+.sm-margin {
+    margin: 5px!important;
+}
+.sm-top-margin {
+    margin-top: 5px!important;
+}
+.no-padding {
+    padding: 0!important;
+}
+.sm-top-padding {
+    padding-top: 5px !important;
+}
+.no-border {
+    border: none!important;
+}
+.project-deadline {
+    font-size: 18px;
+}
+.priject-deadline-date {
+    font-size: 28px;
+    text-align: center;
+}
+.project-member {
+    height: 50px;
+    overflow: auto;
+    white-space: nowrap;
+}
+.project-member img {
+    display: inline-block;
+    float: left;
+}
+.taks-details-table {
+    border: none;
+    width: 100%;
+}
+.dashboard-account-name {
+    text-align: center;
+    font-size: 18px;
+    padding-top: 2px;
+}
+.dashboard-name {
+    font-size: 26px;
+    text-align: center;
+}
+.dashboard-post {
+    font-size: 14px;
+    text-align: center;
+}
+.dashboard-add-linkitter {
+    text-align: center;
+}
+.dashboard-progress-box {
+    height: 80px;
+    width: 100%;
+    padding-top: 5px;
+}
+.dashboard-circle-graph {
+    display: table-cell;
+    padding: 2px;
+}
+.diagram {
+	display: inline-block;
+	margin: 2em;
+}
+
+/*ben*/
+
+.borderless tbody tr td,
+.borderless tbody tr th,
+.borderless thead tr th {
+    border: none;
+}
+.edit {
+    background-color: #F00;
+    color: #FFF;
+    font-size: 20px;
+    margin-top: 5px;
+    padding: 10px;
+}
+.textContainer {
+    height: 60px;
+    line-height: 60px;
+}
+.textContainer a {
+    color: #000;
+}
+.friendListPic {
+    margin-left: 5px;
+    max-height: 60px;
+}
+.projectListPic {
+    margin-left: 5px;
+    max-height: 250px;
+}
+.friendListItem {
+    padding: 5px;
+}
+.overview {
+    display: table-cell;
+}
+.overflowX {
+    overflow-x: scroll;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+.nfc_icon {
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 350px;
+}
+#addByEmail {
+    margin-top: 5px;
+}
+#successEmail {
+    font-size: 20px;
+}
+
+/*circula graph*/
+
+.circliful {
+    position: relative;
+}
+.circle-text,
+.circle-info,
+.circle-text-half,
+.circle-info-half {
+    display: inline-block;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+.circle-info,
+.circle-info-half {
+    color: #999;
+}
+.circliful .fa {
+    bottom: 4px;
+    margin: -10px 3px 0;
+    position: relative;
+}

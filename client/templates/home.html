@@ -1,0 +1,45 @@
+<template name="home">
+    <div class="container">
+        <div class="row">  
+            <div class="col-xs-1">&nbsp;</div>
+            <div class="col-xs-4"><img src="/images/people1.png" width="100" height="100" /></div>
+            <div class="col-xs-6">
+                <div class="dashboard-name">SAM TONG</div>
+                <div class="dashboard-post">SENIOR DESIGNER</div>
+                <div class="dashboard-add-linkitter sm-top-margin"><button type="button" class="btn btn-primary">ADD LINKITTER</button></div>
+            </div>
+            <div class="col-xs-1">&nbsp;</div>
+        </div>
+        <div>&nbsp;</div>
+        <!-- <div>&nbsp;</div> -->
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div><h3>Current Projects:</h3></div>
+                        {{#each project}}
+                        {{> homeproject}}
+                        {{/each}}
+            </div>
+        </div>
+        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default" onclick="location.href='/addproject'">CREATE PROJECT</button>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default" onclick="location.href='/projectlist'">VIEW MY PROJECT</button>
+            </div>
+        </div>
+        <div>&nbsp;</div>
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading text-center">TO-DO</div>
+            <!-- List group -->
+            <ul class="list-group">
+                <li class="list-group-item" onclick="location.href='/individualproj/5529ddb9d5369f1d2e6b437c'"><span class="badge">14</span>Draft project plan</li>
+                <li class="list-group-item" onclick="location.href='/individualproj/5529ddb9d5369f1d2e6b437c'"><span class="badge">2</span>Design Interface</li>
+                <li class="list-group-item" onclick="location.href='/individualproj/5529ddb9d5369f1d2e6b437c'"><span class="badge">3</span>Lunch meeting with team</li>
+                <li class="list-group-item" onclick="location.href='/individualproj/5529ddb9d5369f1d2e6b437c'"><span class="badge">5</span>Writing Prototype</li>
+            </ul>
+        </div>
+    </div> <!-- /container -->
+    {{invokeAfterLoad}}
+</template>
