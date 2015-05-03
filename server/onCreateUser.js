@@ -15,7 +15,8 @@ Accounts.onCreateUser(function(option, user) {
 	var givenName = user.services.google.given_name;
 	var familyName = user.services.google.family_name;
 	var email = user.services.google.email;
-	LinkitterProfile.insert({ user_id: user._id, name: givenName, surname: familyName, email: email, phone: '', website: '' });
+	Profiles.insert({ user_id: user._id, name: givenName, surname: familyName, company: '', email: email, phone: '', website: '', pending: [], friends: [ user._id ] });
+	//TODO: modify login config and ask for phone, company and website
 
 	/* return user object with email */
 	return user;

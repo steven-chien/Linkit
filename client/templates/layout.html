@@ -1,5 +1,6 @@
 <template name="layout">
-  {{> loginTemplate}}
+  {{> login}}
+  {{#if currentUser}}
   <!-- {{> testCalList}} -->
   <!-- {{> headerTemplate}} -->
 
@@ -28,4 +29,5 @@
   });
   </script>
   <!--  {{> testCalList}} -->
+  {{/if}}
 </template>
