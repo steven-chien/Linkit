@@ -1,0 +1,38 @@
+<template name="overview">
+	<!-- content -->
+	<div class="container">
+		<ul class="nav nav-tabs">
+		-	{{> list_nav}}
+		</ul>
+		<div class="row">
+		<!-- [add]
+		the <ul> and <li> structure
+		[/add] -->
+			<ul class="list-group">
+				<li class="list-group-item active">Recently Added</li>
+				<li class="list-group-item">
+					<div class="overflowX">
+					<!-- [edit]
+					find the recent added friend
+					change the href,img src
+					[/edit] -->
+						{{#each friend}}
+						<div class="overview"><a href="/profile/{{user_id}}"><img src="/user/people1.png" class="friendListPic">{{name}} {{surname}}</a></div>
+						{{/each}}
+					</div>
+				</li>
+				<li class="list-group-item active">You are currently working with...</li>
+				<li class="list-group-item">
+					<div class="overflowX">
+					<!-- [edit]
+					find the all the projects
+					change the href,img src
+					[/edit] -->
+						<div class="overview"><a href=#><img src="/image/project/Project_Group_Two.png" class="projectListPic"></a></div>
+						<div class="overview"><a href=#><img src="/image/project/Project_Group_One.png" class="projectListPic"></a></div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</template>

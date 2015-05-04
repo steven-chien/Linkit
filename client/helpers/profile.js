@@ -1,6 +1,9 @@
 Template.profile.helpers({
-	iscurrentUser: function () {
-		var currentRoute = Router.current();
-		return currentRoute.url.search(LinkitterList.find({username:{ $regex: Meteor.user().profile.name, $options: 'i' }}).fetch()[0]._id)>=0;
+	info: function() {
+		if(Meteor.userId()) {
+			var target_id = Router.current().data();
+			var profile = Profiles.findOne({ user_id: target_id });
+			return profile;
+		}
 	}
 });

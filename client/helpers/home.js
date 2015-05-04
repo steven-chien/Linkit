@@ -1,6 +1,9 @@
 Template.home.helpers({
 	userInfo: function() {
-		var info = Profiles.findOne({ user_id: Meteor.userId() });
-		return info;
+		userId = Meteor.userId();
+		if(userId) {
+			var info = Profiles.findOne({ user_id: userId });
+			return info;
+		}
 	}
 });

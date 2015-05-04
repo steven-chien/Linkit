@@ -3,8 +3,9 @@ Meteor.publish('myUser', function() {
 });
 Meteor.publish('Profiles', function() {
 	if(this.userId) {
-		var friends = Profiles.findOne({ user_id: this.userId }).friends;
-		return Profiles.find({ user_id: { $in: friends } });
+		var userProfile = Profiles.findOne({ user_id: this.userId });
+		var list = userProfile && userProfile.friends;
+		return Profiles.find({ user_id: { $in: list } });
 	}
 });
 

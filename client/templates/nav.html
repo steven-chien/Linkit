@@ -9,7 +9,7 @@
 					<span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand-center navbar-brand" href="/">
-					<img src="icons/logo_(50X50).png" height="30" width="68">
+					<img src="/icons/logo_(50X50).png" height="30" width="68">
 				</a>
 				</div>
 				
@@ -24,7 +24,7 @@
 
 <template name='navItems'>
 	<li class="{{ activeIfTemplateIs 'Profile' }}">
-		<a href="{{myprofile}}">Profile</a>
+		<a href="{{myProfilePath}}">Profile</a>
 	</li>
 	<li class="{{ activeIfTemplateIs 'Linkitterlist' }}">
 		<a href="/link/overview">Linkitter List</a>
@@ -32,4 +32,25 @@
 	<li class="{{ activeIfTemplateIs 'Individualproj' }}">
 		<a href="/projectlist">Project</a>
 	</li>
+</template>
+
+<template name='list_nav'>
+<!--   <li class="{{ activeIfTemplateIs 'Profile' }}">
+    <a href="{{myprofile}}">Profile</a>
+  </li>
+  <li class="{{ activeIfTemplateIs 'Linkitterlist' }}">
+    <a href="/link/overview">Linkitter List</a>
+  </li>
+  <li class="{{ activeIfTemplateIs 'Project' }}">
+    <a href="/6project">Project</a>
+  </li> -->
+  <li role="presentation" class="{{ activeIfTemplateIs 'Overview' }}">
+    <a href="/link/overview">Overview</a>
+  </li>
+  <li role="presentation" class="{{ activeIfTemplateIs 'Linkitterlist' }}">
+    <a href="/link/linkitterlist">LINKITer</a>
+  </li>
+  <li role="presentation" class="{{ activeIfTemplateIs 'Addfriend' }}">
+    <a href="{{addfriend}}">Add LINKITer</a>
+  </li>
 </template>
