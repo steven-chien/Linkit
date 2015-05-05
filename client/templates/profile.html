@@ -1,4 +1,5 @@
 <template name="profile">
+	{{#if info}}
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 col-md-6">
@@ -26,4 +27,9 @@
 			<div class="row" id="edit"><p class="text-center">Edit Profile</p></div>
 		{{/if}}
 	</div> 
+	{{else}}
+	<div class="container">
+		<div class="col-xs-9"><span><b>The user ID that you are looking for does not exist in your friend list!</b></span></div>
+	</div>
+	{{/if}}
 </template>
