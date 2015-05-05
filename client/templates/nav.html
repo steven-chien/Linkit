@@ -23,34 +23,25 @@
 </template>
 
 <template name='navItems'>
-	<li class="{{ activeIfTemplateIs 'Profile' }}">
-		<a href="{{myProfilePath}}">Profile</a>
+	<li class="{{ activateTab 'Profile' }}">
+		<a href="/profile/{{myUserId}}">Profile</a>
 	</li>
-	<li class="{{ activeIfTemplateIs 'Linkitterlist' }}">
+	<li class="{{ activateTab 'link' }}">
 		<a href="/link/overview">Linkitter List</a>
 	</li>
-	<li class="{{ activeIfTemplateIs 'Individualproj' }}">
+	<li class="{{ activateTab 'project' }}">
 		<a href="/projectlist">Project</a>
 	</li>
 </template>
 
 <template name='list_nav'>
-<!--   <li class="{{ activeIfTemplateIs 'Profile' }}">
-    <a href="{{myprofile}}">Profile</a>
-  </li>
-  <li class="{{ activeIfTemplateIs 'Linkitterlist' }}">
-    <a href="/link/overview">Linkitter List</a>
-  </li>
-  <li class="{{ activeIfTemplateIs 'Project' }}">
-    <a href="/6project">Project</a>
-  </li> -->
-  <li role="presentation" class="{{ activeIfTemplateIs 'Overview' }}">
+  <li role="presentation" class="{{ activateTab 'Overview' }}">
     <a href="/link/overview">Overview</a>
   </li>
-  <li role="presentation" class="{{ activeIfTemplateIs 'Linkitterlist' }}">
+  <li role="presentation" class="{{ activateTab 'linkitterList' }}">
     <a href="/link/linkitterlist">LINKITer</a>
   </li>
-  <li role="presentation" class="{{ activeIfTemplateIs 'Addfriend' }}">
+  <li role="presentation" class="{{ activateTab 'Addfriend' }}">
     <a href="{{addfriend}}">Add LINKITer</a>
   </li>
 </template>
