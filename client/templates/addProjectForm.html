@@ -1,0 +1,23 @@
+<template name="addProjectForm">
+	<div class="container">
+		<div class="form-group">
+			<label class="sr-only" for="taskName">Project Name</label>
+			<input type="text" class="form-control" id="taskName" placeholder="Project Name">
+		</div>
+		<div class="form-group">
+			<label class="sr-only" for="deadline">Deadline</label>
+			<input type="datetime-local" class="form-control" id="deadline" placeholder="Deadline">
+		</div>
+		<div class="form-group">
+		<textarea class="form-control" id="details" rows="10" placeholder="Details"></textarea>
+		</div>
+		<div class="input-group">
+			<input type="text" class="form-control" placeholder="Member" id="member">
+			<span class="input-group-btn">
+				<button class="btn btn-primary" type="button" id="myselect">Add member</button>
+			</span>
+		</div>
+	</div>
+	<div>&nbsp;</div>
+	<button id="issueForm" type="submit" class="btn btn-primary btn-lg btn-block">Create Project</button>
+</template>
