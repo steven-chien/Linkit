@@ -10,7 +10,7 @@ Meteor.methods({
 					membersList.push(memberObj);
 					console.log(membersList);
 				}
-				Projects.insert({ creator: this.userId, name: projName, description: details, members: membersList });
+				Projects.insert({ creator: this.userId, name: projName, description: details, deadline: deadline, members: membersList });
 				return true;
 			}
 			catch(ex) {

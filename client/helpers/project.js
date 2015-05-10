@@ -1,42 +1,23 @@
 Template.project.helpers({
-	project: function() {
-            return pmprojects.find();  
-        },
-	addingProj: function() {
-		var state = Session.get('addingProj');
-		console.log(state);
-		if(state==true)
-			return true;
-	},
-	addProjButton: function() {
-		var state = Session.get('addingProj');
-		console.log(state);
-		if(state!=true)
-			return true;
-	},
-	selfProject: function() {
+	projInfo: function() {
 		var userId = Meteor.userId();
 		if(userId) {
-			var projList = Projects.find({ creator: userId });
-			return projList;
+			var projectId = Router.current().data();
+			return Projects.findOne(projectId);
 		}
 	},
-	otherProject: function() {
-		var userId = Meteor.userId();
-		if(userId) {
-			var projList = Projects.find({ creator: { $not: userId }, members: { $in: userId } });
-			return projList;
-		}
-	},
+	addingTask: function() {
+		var addingTaskState = Session.get('addingTask');
+		if(addingTaskState)
+			return true;
+	}
 });
 
 Template.project.events({
-	'click #addProj': function() {
-		Session.set('addingProj', true);
-		Session.set('addMemberList', [Meteor.userId()]);
-	},
-	'click #cancelProj': function() {
-		Session.set('addingProj', false);
-		Session.set('addMemberList', [Meteor.userId()]);
+	'click #addTask': function(evt) {
+		var userId = Meteor.userId();
+		if(userId) {
+			Session.set('addingTask', true);
+		}
 	}
 });

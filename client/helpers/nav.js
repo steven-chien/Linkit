@@ -4,7 +4,7 @@ Template.navItems.helpers({
 			return Meteor.userId();
 	},
 	activateTab: function(templateName) {
-		var currentRoute = Router.current().route.path(this);
+		var currentRoute = Router.current().location.get().path;
 		if(currentRoute.indexOf(templateName.toLowerCase())!=-1)
 			return 'active';
 		else
@@ -20,10 +20,9 @@ Template.list_nav.helpers({
 		}
 	},
 	activateTab: function(templateName) {
-		var currentRoute = Router.current().route.path(this);
+		var currentRoute = Router.current().location.get().path;
+		console.log('current url: '+currentRoute.toLowerCase());
 		if(currentRoute.toLowerCase().indexOf(templateName.toLowerCase())!=-1)
 			return 'active';
-		else
-			return '';
 	}
 });

@@ -19,6 +19,7 @@ Template.addProjectForm.events({
 		if(userId) {
 			var projName = $('#taskName').val();
 			var deadline = new Date($('#deadline').val());
+			deadline.setTime(deadline.getTime() + deadline.getTimezoneOffset()*60*1000);
 			var details = $('#details').val();
 			var members = Session.get('addMemberList');
 			console.log(projName);

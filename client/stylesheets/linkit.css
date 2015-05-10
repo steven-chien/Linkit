@@ -45,10 +45,10 @@ html, body {
 .no-border {
     border: none!important;
 }
-.project-deadline {
+.priject-deadline {
     font-size: 18px;
 }
-.priject-deadline-date {
+.project-deadline-date {
     font-size: 28px;
     text-align: center;
 }

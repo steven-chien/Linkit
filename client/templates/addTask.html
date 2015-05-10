@@ -1,0 +1,22 @@
+<template name="addTaskForm">	
+	<div class="container">
+		<div class="form-group">
+			<label class="sr-only" for="taskName">Task Name</label>
+			<input type="text" class="form-control" id="taskName" placeholder="Task Name">
+		</div>
+		<div class="form-group">
+			<label class="sr-only" for="deadline">Task Name</label>
+			<input type="text" class="form-control" id="deadline" placeholder="Deadline">
+		</div>
+		<div class="form-group">
+		<textarea class="form-control" rows="10" placeholder="Details"></textarea>
+		</div>
+		<div class="form-group">
+			<label class="sr-only" for="pic">pic</label>
+			<input type="text" class="form-control" id="pic" placeholder="Who is/are responsible for it?">
+		</div>
+		<div>&nbsp;</div>
+		<button id="success" type="button" class="btn btn-primary btn-lg">Create Task</button>
+		<button id="cancel" type="button" class="btn btn-primary btn-lg" style="background-color:red">Cancel</button>
+	</div>
+</template>
