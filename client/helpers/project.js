@@ -20,5 +20,8 @@ Template.project.helpers({
 Template.project.events({
 	'click #addProj': function() {
 		Session.set('addingProj', true);
+	},
+	'click #cancelProj': function() {
+		Session.set('addingProj', false);
 	}
 });
