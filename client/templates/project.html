@@ -1,7 +1,7 @@
 <template name="project">
 	<div class="container">
-		{{#each project}}
-			{{> projectlistproject}}
+		{{#each selfProject}}
+			{{> projectDetails}}
 		{{/each}}
 		{{#if addingProj}}
 			{{> addProjectForm}}
@@ -26,56 +26,59 @@
 </template>
 
 
-<template name="projectlistproject">
-        <ul class="list-group">
-            <div class="list-group-item"><table border="0">
-                    <tr>
-                        <td width="100%" rowspan="2" valign="top">
-                            <div><a href="/individualproj/{{_id.toHexString}}"><h4>{{name}}</h4></a></div>
-                            <div>This is a programming project.</div>
-                        </td>
-                        <td width="50" rowspan="2" valign="top">
-                            <div class="project-deadline">Deadline</div>
-                            <div class="priject-deadline-date">{{Deadline}}</div>
-                        </td>
-                    </tr>
-                </table></div>
-            <div class="list-group-item">
-                <div class="input-group">
-                    <div class="progress"><!-- Draft project plan -->
-                        <div class="progress-bar"
-                            role="progressbar"
-                            style="width: {{progress}};"></div>
-                    </div>
-                    <span class="input-group-addon">{{progress}}</span>
-                </div>
-            </div>
-            <div class="list-group-item">
-                <table border="0">
-                    <tr>
-                        <td width="100%"><h4 class="list-group-item-heading">Members</h4></td>
-                    </tr>
-                    <tr>
-                        <td calss="project-member">
-                            <img src="/images/people1.png" width="50" height="50" />
-                            <img src="/images/people2.png" width="50" height="50" />
-                            <img src="/images/people3.png" width="50" height="50" />
-                            <img src="/images/people4.png" width="50" height="50" />
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <div class="list-group-item">
-                        <div width="100%"><h4 class="list-group-item-heading">Tasks</h4></div>
-                        <!-- List group -->
-                        <div>
-                        <ul style="margin-left: 0; padding: 0;">
-                            <li class="list-group-item"><span class="badge">14</span>Draft project plan</li>
-                            <li class="list-group-item"><span class="badge">2</span>Design Interface</li>
-                            <li class="list-group-item"><span class="badge">3</span>Lunch meeting with team</li>
-                            <li class="list-group-item"><span class="badge">5</span>Writing Prototype</li>
-                        </ul>
-                        </div>
-            </div>
-        </ul>
+<template name="projectDetails">
+	<ul class="list-group">
+		<div class="list-group-item">
+			<table border="0">
+				<tr>
+					<td width="100%" rowspan="2" valign="top">
+						<div><a href="/individualproj/{{_id.toHexString}}"><h4>{{name}}</h4></a></div>
+						<div>{{details}}</div>
+					</td>
+					<td width="50" rowspan="2" valign="top">
+						<div class="project-deadline"></div>
+						<div class="priject-deadline-date">{{deadline}}</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="list-group-item">
+			<div class="input-group">
+				<div class="progress"><!-- Draft project plan -->
+					<div class="progress-bar" role="progressbar" style="width: {{progress}};"></div>
+				</div>
+				<span class="input-group-addon">{{progress}}</span>
+			</div>
+		</div>
+		<div class="list-group-item">
+			<table border="0">
+				<tr>
+					<td width="100%"><h4 class="list-group-item-heading">Members</h4></td>
+				</tr>
+				<tr>
+					<td calss="project-member">
+						<!--    <img src="/images/people1.png" width="50" height="50" />
+						<img src="/images/people2.png" width="50" height="50" />
+						<img src="/images/people3.png" width="50" height="50" />
+						<img src="/images/people4.png" width="50" height="50" /> -->
+						{{#each members}}
+						<li><a href="/profile/{{id}}">{{name}}</a></li>
+						{{/each}}
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="list-group-item">
+			<div width="100%"><h4 class="list-group-item-heading">Tasks</h4></div>
+			<!-- List group -->
+			<div>
+			<ul style="margin-left: 0; padding: 0;">
+				<li class="list-group-item"><span class="badge">14</span>Draft project plan</li>
+				<li class="list-group-item"><span class="badge">2</span>Design Interface</li>
+				<li class="list-group-item"><span class="badge">3</span>Lunch meeting with team</li>
+				<li class="list-group-item"><span class="badge">5</span>Writing Prototype</li>
+			</ul>
+		</div>
+	</div>
+</ul>
 </template>

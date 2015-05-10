@@ -17,6 +17,13 @@ Meteor.publish('recentFriends', function() {
 	}
 });
 
+Meteor.publish('Projects', function() {
+	if(this.userId) {
+		var projects = Projects.find({ "members.id": { $in: [this.userId] } });
+		return projects;
+	}
+});
+
 Meteor.publish('pmtasks', function() {
 	return pmtasks.find();
 });

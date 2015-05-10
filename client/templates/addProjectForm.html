@@ -1,5 +1,6 @@
 <template name="addProjectForm">
 	<div class="container">
+		<h4>Add a project</h4>
 		<div class="form-group">
 			<label class="sr-only" for="taskName">Project Name</label>
 			<input type="text" class="form-control" id="taskName" placeholder="Project Name">
@@ -14,8 +15,15 @@
 		<div class="input-group">
 			<input type="text" class="form-control" placeholder="Member" id="member">
 			<span class="input-group-btn">
-				<button class="btn btn-primary" type="button" id="myselect">Add member</button>
+				<button class="btn btn-primary" type="button" id="addMember">Add member</button>
 			</span>
+		</div>
+		<div class="form-group">
+			<ul>
+			{{#each members}}
+				<li>{{name}} {{surname}}</li>
+			{{/each}}
+			</ul>
 		</div>
 	</div>
 	<div>&nbsp;</div>
