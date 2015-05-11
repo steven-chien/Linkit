@@ -6,17 +6,23 @@
 		</div>
 		<div class="form-group">
 			<label class="sr-only" for="deadline">Task Name</label>
-			<input type="text" class="form-control" id="deadline" placeholder="Deadline">
+			<input type="datetime-local" class="form-control" id="deadline" placeholder="Deadline">
 		</div>
 		<div class="form-group">
-		<textarea class="form-control" rows="10" placeholder="Details"></textarea>
+		<textarea id="details" class="form-control" rows="10" placeholder="Details"></textarea>
 		</div>
 		<div class="form-group">
 			<label class="sr-only" for="pic">pic</label>
-			<input type="text" class="form-control" id="pic" placeholder="Who is/are responsible for it?">
+			<input type="text" class="form-control" id="userEmail" placeholder="Who is/are responsible for it?">
+			<button id="addManager" class="btn btn-secondary">Add</button>
 		</div>
+		<ul>
+		{{#each managers}}
+			<li>{{.}}</li>
+		{{/each}}
+		</ul>		
 		<div>&nbsp;</div>
-		<button id="success" type="button" class="btn btn-primary btn-lg">Create Task</button>
+		<button id="success" type="submit" class="btn btn-primary btn-lg">Create Task</button>
 		<button id="cancel" type="button" class="btn btn-primary btn-lg" style="background-color:red">Cancel</button>
 	</div>
 </template>

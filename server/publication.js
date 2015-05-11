@@ -24,6 +24,18 @@ Meteor.publish('Projects', function() {
 	}
 });
 
+Meteor.publish('Tasks', function() {
+	if(this.userId) {
+		var taskList = [];
+		var projects = Projects.find({ "members.id": { $in: [this.userId] } });
+		projects.forEach(function(project) {
+			taskList.push(project._id);
+		});
+		var tasks = Tasks.find({ project_id: { $in: taskList } });
+		return tasks;
+	}
+});
+
 Meteor.publish('pmtasks', function() {
 	return pmtasks.find();
 });
