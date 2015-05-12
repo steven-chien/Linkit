@@ -34,10 +34,13 @@
 			<div class="panel-heading text-center">TO-DO</div>
 			<!-- List group -->
 			<ul class="list-group">
-				<li class="list-group-item" onclick="location.href='/individualproj/5529ddb9d5369f1d2e6b437c'"><span class="badge">14</span>Draft project plan</li>
+				{{#each task}}
+				<li class="list-group-item"><span class="badge">{{daysLeft}} days left</span>{{name}}</li>
+				{{/each}}
+				<!--<li class="list-group-item" onclick="location.href='/individualproj/5529ddb9d5369f1d2e6b437c'"><span class="badge">14</span>Draft project plan</li>
 				<li class="list-group-item" onclick="location.href='/individualproj/5529ddb9d5369f1d2e6b437c'"><span class="badge">2</span>Design Interface</li>
 				<li class="list-group-item" onclick="location.href='/individualproj/5529ddb9d5369f1d2e6b437c'"><span class="badge">3</span>Lunch meeting with team</li>
-				<li class="list-group-item" onclick="location.href='/individualproj/5529ddb9d5369f1d2e6b437c'"><span class="badge">5</span>Writing Prototype</li>
+				<li class="list-group-item" onclick="location.href='/individualproj/5529ddb9d5369f1d2e6b437c'"><span class="badge">5</span>Writing Prototype</li>-->
 			</ul>
 		</div>
 	</div> <!-- /container -->

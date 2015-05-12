@@ -79,10 +79,9 @@
 			<!-- List group -->
 			<div>
 			<ul style="margin-left: 0; padding: 0;">
-				<li class="list-group-item"><span class="badge">14</span>Draft project plan</li>
-				<li class="list-group-item"><span class="badge">2</span>Design Interface</li>
-				<li class="list-group-item"><span class="badge">3</span>Lunch meeting with team</li>
-				<li class="list-group-item"><span class="badge">5</span>Writing Prototype</li>
+				{{#each task}}
+				<li class="list-group-item"><span class="badge">{{daysLeft}} days left</span>{{name}}</li>
+				{{/each}}
 			</ul>
 		</div>
 	</div>

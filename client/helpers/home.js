@@ -1,4 +1,30 @@
 Template.home.helpers({
+	task: function() {
+		var userId = Meteor.userId();
+		if(userId) {
+			var tasks = Tasks.find({ "managers.id": userId });
+			return tasks;
+		}
+	},
+	daysLeft: function() {
+		/* login status check */
+		var userId = Meteor.userId();
+		if(userId) {
+			/* extract task obj by task id */
+			var taskId = this._id;
+			var task = Tasks.findOne(taskId);
+
+			/* extract task deadline */
+			var taskDeadline = task && task.deadline;
+
+			/* calculate difference in days between deadline and now */
+			var currentDate = new Date();
+			var oneDay = 24*60*60*1000;
+			var diff = Math.floor((taskDeadline.getTime() - currentDate.getTime())/(oneDay));
+
+			return diff;
+		}
+	},
 	userInfo: function() {
 		userId = Meteor.userId();
 		if(userId) {
