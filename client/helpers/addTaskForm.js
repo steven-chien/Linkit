@@ -15,8 +15,7 @@ Template.addTaskForm.helpers({
 		return managerList;
 	}
 });
-Template.addTaskForm.events({
-});
+
 Template.addTaskForm.events({
 	'click #addManager': function(evt) {
 		var userId = Meteor.userId();
@@ -24,17 +23,28 @@ Template.addTaskForm.events({
 			/* extract email from form for searching */
 			var email = $('#userEmail').val();
 
+			/* get current route */
+			var currentRoute = Router.current().location.get().path;
+			var projectId = currentRoute.substr(currentRoute.lastIndexOf('/') + 1);
+
 			/* get member id by email */
 			var manager = Profiles.findOne({ email: email });
 			var managerId = manager && manager.user_id;
-			var managerList = Session.get('taskManagers');
-			if(!managerList)
-				managerList = [];
+			var projMemberList = Projects.findOne({ "members.id": managerId });
 
-			/* if member does not exist on project list, he can not be assigned a task */
-			if(typeof(email)!='underfined' && managerList.indexOf(managerId)==-1) {
-				managerList.push(managerId);
-				Session.set('taskManagers', managerList);
+			if(typeof(managerId)!='undefined') {
+				var managerList = Session.get('taskManagers');
+				if(!managerList)
+					managerList = [];
+
+				/* if member does not exist on project list, he can not be assigned a task */
+				if(typeof(email)!='underfined' && managerList.indexOf(managerId)==-1) {
+					managerList.push(managerId);
+					Session.set('taskManagers', managerList);
+				}
+			}
+			else {
+				window.alert('User is not member of this project!');
 			}
 
 			$('#userEmail').val('');

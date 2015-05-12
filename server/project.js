@@ -44,7 +44,7 @@ Meteor.methods({
 				}
 
 				/* perform insertion after manager list is ready */
-				Tasks.insert({ creator: this.userId, project_id: projectId, deadline: deadline, details: details, managers: membersList });
+				Tasks.insert({ creator: this.userId, project_id: projectId, name: taskName, deadline: deadline, details: details, managers: membersList });
 				return true;
 			}
 			catch(ex) {
