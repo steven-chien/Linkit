@@ -1,6 +1,11 @@
 <template name="projectList">
 	<div class="container">
+		Your Projects:
 		{{#each selfProject}}
+			{{> projectDetails}}
+		{{/each}}
+		Projects you are in:
+		{{#each otherProject}}
 			{{> projectDetails}}
 		{{/each}}
 		<hr>

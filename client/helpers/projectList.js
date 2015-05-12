@@ -24,7 +24,7 @@ Template.projectList.helpers({
 	otherProject: function() {
 		var userId = Meteor.userId();
 		if(userId) {
-			var projList = Projects.find({ creator: { $not: [userId] }, "members.id": { $in: [userId] } });
+			var projList = Projects.find({ creator: { $ne: userId }, "members.id": { $in: [userId] } });
 			return projList;
 		}
 	}
