@@ -44,13 +44,18 @@ Meteor.methods({
 				}
 
 				/* perform insertion after manager list is ready */
-				Tasks.insert({ creator: this.userId, project_id: projectId, name: taskName, deadline: deadline, details: details, managers: membersList });
+				Tasks.insert({ creator: this.userId, project_id: projectId, name: taskName, deadline: deadline, details: details, managers: membersList, state: false });
 				return true;
 			}
 			catch(ex) {
 				return String(ex);
 			}
 
+		}
+	},
+	setTaskState: function(taskId, state) {
+		if(this.userId) {
+			Tasks.update({ _id: taskId },{ $set: { state: state } });
 		}
 	}
 });

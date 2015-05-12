@@ -9,7 +9,9 @@
 							<h4 class="panel-title">{{name}}</h4>
 						</td>
 						<td width="50" valign="top">
+							{{#if taskFinished}}
 							<div align="right"><span class="glyphicon glyphicon-ok"></span></div>
+							{{/if}}
 						</td>
 					</tr>
 				</table>
@@ -19,24 +21,31 @@
 			<div class="panel-body">
 				<table class="taks-details-table">
 					<tr>
-						<td>Deadline:<br/> {{time}}</td>
+						<td>Deadline:<br/> {{deadline}}</td>
 						<!-- <td>Location:<br/> {{location}}</td> -->
 					</tr>
 					<tr>
-						<td colspan="2">Assigned to: {{assignedto}}</td>
+						<td colspan="2">
+							Assigned to:
+							<ul>
+								{{#each managers}}
+								<li><a href="/profile/{{id}}">{{name}}</a></li>
+								{{/each}}
+							</ul>
+						</td>
 					</tr>
 					<tr>
-						<td colspan="2">Description: {{Description}}</td>
+						<td colspan="2">Description: {{details}}</td>
 					</tr>
 					<tr>
 						<h5> </h5>
 						<td colspan="2">
-							<button class="btn btn-primary btn-lg btn-block" style="background-color:white" onclick="alert('This task is set to Not finished')">
+							<button id="taskNotFinished" name="{{_id}}" class="btn btn-primary btn-lg btn-block" style="background-color:white">
 								<span style="color:red" class="glyphicon glyphicon-remove"></span>
 							</button>
 						</td>
 						<td colspan="2">
-							<button class="btn btn-primary btn-lg btn-block" style="background-color:white"  onclick="alert('This task is set to finished')">
+							<button id="taskFinished" name="{{_id}}" class="btn btn-primary btn-lg btn-block" style="background-color:white">
 								<span style="color:green" class="glyphicon glyphicon-ok"></span>
 							</button>
 						</td>
