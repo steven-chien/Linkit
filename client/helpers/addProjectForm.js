@@ -42,14 +42,12 @@ Template.addProjectForm.events({
 	'click #addMember': function(evt) {
 		var userId = Meteor.userId();
 		if(userId) {
-			var search = $('#member').val();
-			member = Profiles.findOne({ email: search });
-			var member_email = member && member.user_id;
-			if(member_email) {
+			/* extract member id, no need to check friendship because it's determined during publication */
+			var member_id = evt.target.id;
+			if(member_id) {
 				var memberList = Session.get('addMemberList');
-				memberList.push(member_email);
+				memberList.push(member_id);
 				jQuery.unique(memberList);
-				$('#member').val('');
 				Session.set('addMemberList', memberList);
 			}
 			else {

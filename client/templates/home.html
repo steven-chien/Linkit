@@ -35,7 +35,7 @@
 			<!-- List group -->
 			<ul class="list-group">
 				{{#each task}}
-				<li class="list-group-item"><span class="badge">{{daysLeft}} days left</span>{{name}}</li>
+				<li class="list-group-item"><span class="badge">{{daysLeft}} days left</span><a href="/project/{{project_id}}">{{name}}</a></li>
 				{{/each}}
 				<!--<li class="list-group-item" onclick="location.href='/individualproj/5529ddb9d5369f1d2e6b437c'"><span class="badge">14</span>Draft project plan</li>
 				<li class="list-group-item" onclick="location.href='/individualproj/5529ddb9d5369f1d2e6b437c'"><span class="badge">2</span>Design Interface</li>

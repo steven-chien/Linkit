@@ -13,12 +13,20 @@
 		<textarea class="form-control" id="details" rows="10" placeholder="Details"></textarea>
 		</div>
 		<div class="input-group">
-			<input type="text" class="form-control" placeholder="Member" id="member">
+			<!--<input type="text" class="form-control" placeholder="Member" id="member">
 			<span class="input-group-btn">
 				<button class="btn btn-primary" type="button" id="addMember">Add member</button>
-			</span>
+			</span>-->
+				{{> esInput index="profiles" placeholder="Search members..." }}
+				<p>Click on search result to add a member</p>
+				<ul id="addMember">
+					{{#esEach index="profiles"}}
+					<li id="{{user_id}}">{{name}} {{surname}} {{email}}</li>
+					{{/esEach}}
+				</ul>
 		</div>
 		<div class="form-group">
+			<p>Added member:</p>
 			<ul>
 			{{#each members}}
 				<li>{{name}} {{surname}}</li>

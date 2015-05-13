@@ -16,6 +16,20 @@ Template.taskList.helpers({
 			if(taskState!=false)
 				return true;
 		}
+	},
+	taskManager: function() {
+		var userId = Meteor.userId();
+		if(userId) {
+			var task = Tasks.findOne(this._id);
+			var managers = task && task.managers;
+			var managerIds = [];
+			for(var i=0; i<managers.length; i++) {
+				managerIds.push(managers[i].id);
+			}
+			console.log(managers);
+			if(managerIds.indexOf(userId)!=-1)
+				return true;
+		}
 	}
 });
 

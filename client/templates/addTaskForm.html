@@ -13,9 +13,16 @@
 		</div>
 		<div class="form-group">
 			<label class="sr-only" for="pic">pic</label>
-			<input type="text" class="form-control" id="userEmail" placeholder="Who is/are responsible for it?">
-			<button id="addManager" class="btn btn-secondary">Add</button>
+			<!--<input type="text" class="form-control" id="userEmail" placeholder="Who is/are responsible for it?">
+			<button id="addManager" class="btn btn-secondary">Add</button>-->
+			<p>Click to add or remove</p>
+			<ul id="addManager">
+				{{#each members}}
+				<li id="{{id}}">{{name}}</li>
+				{{/each}}
+			</ul>
 		</div>
+		<p>Added members on list:</p>
 		<ul>
 		{{#each managers}}
 			<li>{{.}}</li>

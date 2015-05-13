@@ -13,6 +13,20 @@ Template.addTaskForm.helpers({
 			managerList.push(name);
 		}
 		return managerList;
+	},
+	members: function() {
+		var userId = Meteor.userId()
+		if(userId) {
+			/* get current route */
+			var currentRoute = Router.current().location.get().path;
+			var projectId = currentRoute.substr(currentRoute.lastIndexOf('/') + 1);
+
+			/* return array of members */
+			var project = Projects.findOne(projectId);
+			var members = project && project.members;
+
+			return members;
+		}
 	}
 });
 
@@ -20,34 +34,29 @@ Template.addTaskForm.events({
 	'click #addManager': function(evt) {
 		var userId = Meteor.userId();
 		if(userId) {
-			/* extract email from form for searching */
-			var email = $('#userEmail').val();
+			/* extract manager id from form for searching */
+			var managerId = evt.target.id;
 
 			/* get current route */
 			var currentRoute = Router.current().location.get().path;
 			var projectId = currentRoute.substr(currentRoute.lastIndexOf('/') + 1);
 
-			/* get member id by email */
-			var manager = Profiles.findOne({ email: email });
-			var managerId = manager && manager.user_id;
-			var projMemberList = Projects.findOne({ "members.id": managerId });
+			/* extract member list from session */
+			var managerList = Session.get('taskManagers');
+			if(!managerList)
+				managerList = [];
 
-			if(typeof(managerId)!='undefined') {
-				var managerList = Session.get('taskManagers');
-				if(!managerList)
-					managerList = [];
-
-				/* if member does not exist on project list, he can not be assigned a task */
-				if(typeof(email)!='underfined' && managerList.indexOf(managerId)==-1) {
-					managerList.push(managerId);
-					Session.set('taskManagers', managerList);
-				}
+			/* if member does not exist on project list, he can not be assigned a task */
+			if(managerList.indexOf(managerId)==-1) {
+				managerList.push(managerId);
 			}
 			else {
-				window.alert('User is not member of this project!');
+				var index = managerList.indexOf(managerId);
+				managerList.splice(index, 1);
 			}
 
-			$('#userEmail').val('');
+			/* update session */
+			Session.set('taskManagers', managerList);
 			console.log(managerList);
 		}
 	},
@@ -55,13 +64,18 @@ Template.addTaskForm.events({
 		evt.preventDefault();
 		var userId = Meteor.userId();
 		if(userId) {
+			/* extract project id */
 			var currentRoute = Router.current().location.get().path;
 			var projectId = currentRoute.substr(currentRoute.lastIndexOf('/') + 1);
+
+			/* extract task details */
 			var taskName = $('#taskName').val();
 			var deadline = new Date($('#deadline').val());
 			deadline.setTime(deadline.getTime() + deadline.getTimezoneOffset()*60*1000);
 			var details = $('#details').val();
 			var managers = Session.get('taskManagers');
+
+			/* call addTask to add task and clear sessions and resubscribe */
 			Meteor.call('addTask', projectId, taskName, deadline, details, managers, function(err, data) {
 				if(err) {
 					window.alert(String(err));
@@ -79,6 +93,7 @@ Template.addTaskForm.events({
 		}
 	},
 	'click #cancel': function(evt) {
+		/* hide task adding panel */
 		Session.set('addingTask', false);
 		Session.set('taskManagers', null);
 	}
