@@ -23,14 +23,28 @@ Template.taskList.events({
 	'click #taskFinished': function(evt) {
 		var userId = Meteor.userId();
 		if(userId) {
-			Meteor.call('setTaskState', this._id, true);
+			Meteor.call('setTaskState', this._id, true, function(err, data) {
+				if(!err) {
+					Meteor.subscribe('Tasks');
+				}
+				else {
+					console.log(String(err));
+				}
+			});
 			console.log(this._id);
 		}
 	},
 	'click #taskNotFinished': function(evt) {
 		var userId = Meteor.userId();
 		if(userId) {
-			Meteor.call('setTaskState', this._id, false);
+			Meteor.call('setTaskState', this._id, false, function(err, data) {
+				if(!err) {
+					Meteor.subscribe('Tasks');
+				}
+				else {
+					console.log(String(err));
+				}
+			});
 			console.log(this._id);
 		}
 	}

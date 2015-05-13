@@ -2,7 +2,7 @@ Template.home.helpers({
 	task: function() {
 		var userId = Meteor.userId();
 		if(userId) {
-			var tasks = Tasks.find({ "managers.id": userId });
+			var tasks = Tasks.find({ "managers.id": userId, state: false });
 			return tasks;
 		}
 	},
