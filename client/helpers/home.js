@@ -40,3 +40,13 @@ Template.home.helpers({
 		}
 	}
 });
+
+Template.home.events({
+	'click #addProj': function(evt) {
+		var userId = Meteor.userId();
+		if(userId) {
+			Session.set('addingProj', true);
+			Router.go('/project');
+		}
+	}
+});
