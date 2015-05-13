@@ -28,8 +28,11 @@
 					find the all the projects
 					change the href,img src
 					[/edit] -->
-						<div class="overview"><a href=#><img src="/image/project/Project_Group_Two.png" class="projectListPic"></a></div>
-						<div class="overview"><a href=#><img src="/image/project/Project_Group_One.png" class="projectListPic"></a></div>
+						{{# each groupmates}}
+						<div class="overview"><a href="/profile/{{user_id}}"><img src="/user/people1.png" class="friendListPic">{{name}} {{surname}}</a></div>
+						{{/each}}
+						<!--<div class="overview"><a href=#><img src="/image/project/Project_Group_Two.png" class="projectListPic"></a></div>
+						<div class="overview"><a href=#><img src="/image/project/Project_Group_One.png" class="projectListPic"></a></div>-->
 					</div>
 				</li>
 			</ul>

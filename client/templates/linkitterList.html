@@ -5,11 +5,11 @@
 			{{> list_nav}}
 		</ul>
 		{{> listSearch}}
-  <div class="posts">
-    {{#each friends}}
-      {{> friendListItem}}
-    {{/each}}
-  </div>
+		<div class="posts">
+			{{#each friends}}
+			{{> friendListItem}}
+			{{/each}}
+		</div>
 
 		<!-- start of section "A"-->
 		<!-- <div class="page-header">
@@ -19,20 +19,21 @@
 </template>
 
 <template name="friendListItem">
-<div class="row friendListItem">
-        <div class="col-xs-3"><img src="{{picture}}" class="img-responsive friendListPic"></div>
-        <div class="col-xs-5 textContainer"><a href="/profile/{{user_id}}">{{name}} {{surname}}</a></div>
-        <div class="col-xs-4"><a class="btn btn-primary text-center" href="#" role="button">Add to<br>project</a></div>
-    </div>
+	<div class="row friendListItem">
+		<div class="col-xs-3"><img src="{{picture}}" class="img-responsive friendListPic"></div>
+		<div class="col-xs-5 textContainer"><a href="/profile/{{user_id}}">{{name}} {{surname}}</a></div>
+		<div class="col-xs-4"><a class="btn btn-primary text-center" href="#" role="button">Add to<br>project</a></div>
+	</div>
 </template>
 
 <template name="listSearch">
 	<form class="input-group">
-        <input type="text" class="form-control" placeholder="Search LINKITer" id="searchbox" autocomplete="off">
-        <span class="input-group-btn">
-            <button class="btn btn-primary" type="submit">
-                <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-        </span>
-    </form>
+		<input type="text" class="form-control" placeholder="Search LINKITer" id="searchbox" autocomplete="off">
+		<span class="input-group-btn">
+			<button class="btn btn-primary" type="submit">
+				<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+			</button>
+		</span>
+	</form>
 </template>
 

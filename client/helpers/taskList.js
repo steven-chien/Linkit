@@ -25,7 +25,7 @@ Template.taskList.events({
 		if(userId) {
 			Meteor.call('setTaskState', this._id, true, function(err, data) {
 				if(!err) {
-					Meteor.subscribe('Tasks');
+					console.log(data);
 				}
 				else {
 					console.log(String(err));
@@ -39,7 +39,7 @@ Template.taskList.events({
 		if(userId) {
 			Meteor.call('setTaskState', this._id, false, function(err, data) {
 				if(!err) {
-					Meteor.subscribe('Tasks');
+					console.log(data);
 				}
 				else {
 					console.log(String(err));
