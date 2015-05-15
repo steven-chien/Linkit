@@ -30,6 +30,20 @@ Template.taskList.helpers({
 			if(managerIds.indexOf(userId)!=-1)
 				return true;
 		}
+	},
+	taskCreator: function() {
+		var userId = Meteor.userId();
+		if(userId) {
+			var task = Tasks.findOne(this._id);
+			var creatorId = task && task.creator;
+			console.log(creatorId);
+			var projectId = task && task.project_id;
+			console.log(projectId);
+			var project = Projects.findOne(projectId);
+			var projectOwner = project && project.creator;
+			if(userId==projectOwner || userId==creatorId) 
+				return true;
+		}
 	}
 });
 
@@ -60,6 +74,12 @@ Template.taskList.events({
 				}
 			});
 			console.log(this._id);
+		}
+	},
+	'click #deleteTask': function(evt) {
+		var userId = Meteor.userId();
+		if(userId) {
+			Meteor.call('deleteTask', this._id);
 		}
 	}
 });

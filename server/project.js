@@ -57,5 +57,10 @@ Meteor.methods({
 		if(this.userId) {
 			Tasks.update({ _id: taskId },{ $set: { state: state } });
 		}
+	},
+	deleteTask: function(taskId) {
+		if(this.userId) {
+			Tasks.remove(taskId);
+		}
 	}
 });

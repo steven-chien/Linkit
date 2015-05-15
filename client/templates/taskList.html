@@ -37,9 +37,16 @@
 					<tr>
 						<td colspan="2">Description: {{details}}</td>
 					</tr>
-					{{#if taskManager}}
 					<tr>
-						<h5> </h5>
+						<h5></h5>
+						{{#if taskCreator}}
+						<td>
+							<button id="deleteTask" name="{{_id}}" class="btn btn-primary btn-lg btn-block" style="background-color:white">
+								<span style="color:green" class="glyphicon glyphicon-trash"></span>
+							</button>	
+						</td>
+						{{/if}}
+						{{#if taskManager}}
 						<td colspan="2">
 							<button id="taskNotFinished" name="{{_id}}" class="btn btn-primary btn-lg btn-block" style="background-color:white">
 								<span style="color:red" class="glyphicon glyphicon-remove"></span>
@@ -50,8 +57,8 @@
 								<span style="color:green" class="glyphicon glyphicon-ok"></span>
 							</button>
 						</td>
+						{{/if}}
 					</tr>
-					{{/if}}
 				</table>
 			</div>
 		</div>
