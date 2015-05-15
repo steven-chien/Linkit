@@ -41,6 +41,19 @@ Template.home.helpers({
 	}
 });
 
+Template.projectSummary.helpers({
+	projProgress: function() {
+		var userId = Meteor.userId();
+		if(userId) {
+			var completedTasks = Tasks.find({ project_id: this._id, state: true }).count();
+			var totalTasks = Tasks.find({ project_id: this._id }).count();
+			var progress = completedTasks / totalTasks * 100;
+			console.log(completedTasks+' '+totalTasks+' '+progress);
+			return progress+'%';
+		}
+	}
+});
+
 Template.home.events({
 	'click #addProj': function(evt) {
 		var userId = Meteor.userId();
