@@ -1,35 +1,80 @@
 <template name="profile">
-	{{#if info}}
+	{{#if currentUser}}
 	<div class="container">
 		<div class="row">
-			<div class="col-xs-12 col-md-6">
-				<div class="row">
-					<div class="col-xs-3"><img src="{{picture}}" alt="profile_pic" class="img-circle img-responsive"></div>
-					<div class="col-xs-9"><span><b>{{info.name}} {{info.surname}}</b></span><br><span>{{info.company}}</span></div>
+		{{#if editProfile}}
+		<div class="col-xs-12 col-md-6">
+			<div class="row">
+				<div class="col-xs-3"><img src="{{picture}}" alt="profile_pic" class="img-circle img-responsive"></div>
+				<div class="col-xs-9">
+					<span>
+						<input id="name" type="text" value="{{info.name}}" placeholder="name...">
+						<input id="surname" type="text" value="{{info.surname}}" placeholder="surname...">
+					</span>
+					<br>
+					<span>
+						<input id="company" type="text" value="{{info.company}}" placeholder="company...">
+					</span>
 				</div>
-				<hr>
-				<div class="row">
-					<table class="table borderless">	
-						<tr><td>Email</td><td>{{info.email}}</td></tr>
-						<tr><td>Phone</td><td>{{info.Phone}}</td></tr>
-						<tr><td>website</td><td>{{info.website}}</td></tr>
-					</table>
-				</div>	
 			</div>
-			<div class="col-xs-12 col-md-12">
-				<hr>
-				<div class="row">{{info.company}}</div>
-				<hr>
-				<div class="row">This is a short description about me. kjsanhflkjhdsa jhsalkjfhlsa dsajhaslkd fsda jalhsfsadlhj dsh lkjjdsalkjdsafjds lkj jd dshjahfk hksdh kjds jsdjds kjh jhdsfdk jkshfd k </div>
-			</div>
+			<hr>
+			<div class="row">
+				<table class="table borderless">	
+					<tr><td>Email</td><td>{{info.email}}</td></tr>
+					<tr><td>Phone</td><td><input id="phone" value="{{info.phone}}" type="tel" placeholder="phone..."></td></tr>
+					<tr><td>website</td><td><input id="website" value="{{info.website}}" type="url" placeholder="website..."></td></tr>
+				</table>
+			</div>	
 		</div>
-		{{#if iscurrentUser}}
-			<div class="row" id="edit"><p class="text-center">Edit Profile</p></div>
+		<div class="col-xs-12 col-md-12">
+			<hr>
+			<div class="row">{{info.company}}</div>
+			<hr>
+			<div class="row">{{info.description}}</div>
+		</div>
+		{{else}}
+		<div class="col-xs-12 col-md-6">
+			<div class="row">
+				<div class="col-xs-3"><img src="{{picture}}" alt="profile_pic" class="img-circle img-responsive"></div>
+				<div class="col-xs-9"><span><b>{{info.name}} {{info.surname}}</b></span><br><span>{{info.company}}</span></div>
+			</div>
+			<hr>
+			<div class="row">
+				<table class="table borderless">	
+					<tr><td>Email</td><td>{{info.email}}</td></tr>
+					<tr><td>Phone</td><td>{{info.Phone}}</td></tr>
+					<tr><td>website</td><td>{{info.website}}</td></tr>
+				</table>
+			</div>	
+		</div>
+		<div class="col-xs-12 col-md-12">
+			<hr>
+			<div class="row">{{info.company}}</div>
+			<hr>
+			<div class="row">{{info.description}}</div>
+		</div>
+
 		{{/if}}
+		</div>
+			{{#if isCurrentUser}}
+			<div class="row">
+				<button id="editProfile" class="btn btn-secondary btn-lg btn-block" style="background-color:white">
+					<span class="glyphicon glyphicon-edit"></span>{{editState}}
+				</button>
+			</div>
+			{{/if}}
 	</div> 
 	{{else}}
 	<div class="container">
 		<div class="col-xs-9"><span><b>The user ID that you are looking for does not exist in your friend list!</b></span></div>
 	</div>
 	{{/if}}
+</template>
+
+<template name="profileEdit">
+</template>
+
+<template name="profileDisplay">
+	<div class="row">
+	</div>
 </template>
