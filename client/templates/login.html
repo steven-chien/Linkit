@@ -1,3 +1,8 @@
 <template name="login">
 	{{> loginButtons}}
+	{{#if currentUser}}
+		<span class="glyphicon glyphicon-arrow-left"></span>logout your Google Account!
+	{{else}}
+		<span class="glyphicon glyphicon-arrow-left"></span>login with your Google Account here!
+	{{/if}}
 </template>

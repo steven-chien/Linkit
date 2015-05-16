@@ -4,17 +4,18 @@
 			<label class="sr-only" for="taskName">Task Name</label>
 			<input type="text" class="form-control" id="taskName" placeholder="Task Name">
 		</div>
+
 		<div class="form-group">
 			<label class="sr-only" for="deadline">Task Name</label>
 			<input type="datetime-local" class="form-control" id="deadline" placeholder="Deadline">
 		</div>
+
 		<div class="form-group">
-		<textarea id="details" class="form-control" rows="10" placeholder="Details"></textarea>
+			<textarea id="details" class="form-control" rows="10" placeholder="Details"></textarea>
 		</div>
-		<div class="form-group">
+	
+		<div class="input-group">
 			<label class="sr-only" for="pic">pic</label>
-			<!--<input type="text" class="form-control" id="userEmail" placeholder="Who is/are responsible for it?">
-			<button id="addManager" class="btn btn-secondary">Add</button>-->
 			<p>Click to add or remove</p>
 			<ul id="addManager">
 				{{#each members}}
@@ -22,12 +23,16 @@
 				{{/each}}
 			</ul>
 		</div>
-		<p>Added members on list:</p>
-		<ul>
-		{{#each managers}}
-			<li>{{.}}</li>
-		{{/each}}
-		</ul>		
+
+		<div class="form-group">
+			<p>Added members on list:</p>
+			<ul>
+				{{#each managers}}
+				<li>{{.}}</li>
+				{{/each}}
+			</ul>		
+		</div>
+
 		<div>&nbsp;</div>
 		<button id="success" type="submit" class="btn btn-primary btn-lg">Create Task</button>
 		<button id="cancel" type="button" class="btn btn-primary btn-lg" style="background-color:red">Cancel</button>

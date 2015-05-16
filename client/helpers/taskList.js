@@ -11,6 +11,7 @@ Template.taskList.helpers({
 	taskFinished: function() {
 		var userId = Meteor.userId();
 		if(userId) {
+			/* control whether a tick is shown next to task name by its status */
 			var task = Tasks.findOne(this._id);
 			var taskState = task && task.state;
 			if(taskState!=false)
@@ -41,6 +42,7 @@ Template.taskList.helpers({
 			console.log(projectId);
 			var project = Projects.findOne(projectId);
 			var projectOwner = project && project.creator;
+			/* determine if user has the right to delete a task */
 			if(userId==projectOwner || userId==creatorId) 
 				return true;
 		}

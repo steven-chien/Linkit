@@ -17,12 +17,12 @@
 				</table>
 			</div>
 		</a>
+
 		<div id="{{_id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{{_id}}_2">
 			<div class="panel-body">
 				<table class="taks-details-table">
 					<tr>
 						<td>Deadline:<br/> {{deadline}}</td>
-						<!-- <td>Location:<br/> {{location}}</td> -->
 					</tr>
 					<tr>
 						<td colspan="2">
@@ -46,6 +46,7 @@
 							</button>	
 						</td>
 						{{/if}}
+
 						{{#if taskManager}}
 						<td colspan="2">
 							<button id="taskNotFinished" name="{{_id}}" class="btn btn-primary btn-lg btn-block" style="background-color:white">
@@ -65,5 +66,3 @@
 	</div>
 	{{/each}}
 </template>
-
-

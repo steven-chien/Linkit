@@ -2,6 +2,7 @@ Template.addProjectForm.helpers({
 	members: function() {
 		var userId = Meteor.userId();
 		if(userId) {
+			/* extract session of members and return where the user is a member of proj */
 			var memberList = Session.get('addMemberList');
 			var friendsList;
 			if(memberList) {

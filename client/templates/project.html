@@ -15,6 +15,7 @@
 					</tr>
 				</table>
 			</div>
+
 			<div class="list-group-item">
 				<div class="input-group">
 					<div class="progress"><!-- Draft project plan -->
@@ -23,6 +24,7 @@
 					<span class="input-group-addon">{{projProgress}}</span>
 				</div>
 			</div>
+
 			<div class="list-group-item">
 				<table border="0">
 					<tr>
@@ -30,10 +32,6 @@
 					</tr>
 					<tr>
 						<td calss="project-member">
-							<!--<img src="/images/people1.png" width="50" height="50" />
-							<img src="/images/people2.png" width="50" height="50" />
-							<img src="/images/people3.png" width="50" height="50" />
-							<img src="/images/people4.png" width="50" height="50" />-->
 							<ul>
 								{{#each projInfo.members}}
 								<li><a href="/profile/{{id}}">{{name}}</a></li>
@@ -43,42 +41,38 @@
 					</tr>
 				</table>
 			</div>
+
 			<div class="list-group-item active">
 				<span class="badge">
 					<a href="#" id="addTask"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
 				</span>
 				Tasks
 			</div>
+
 			<div class="list-group-item">
 			{{#if addingTask}}
 				{{> addTaskForm}}
 			{{/if}}	
 			</div>
+
 			{{> taskList}}
+
 			<div class="list-group-item active">
 				<span class="badge">
 					<a href="#" id="addMeeting"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
 				</span>
 				Meetings
 			</div>
+
 			<div class="list-group-item">
 			{{#if addingMeeting}}
 				{{> addMeetingForm}}
 			{{/if}}
 			</div>
-			<!--{{> meetinglist}}-->
 		</ul>
-		<!-- <div class="btn-group btn-group-justified" role="group" aria-label="...">
-		<div class="btn-group" role="group">
-		<button type="button" class="btn btn-primary">
-		<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit Project</button>
-		</div>
-		</div> -->
 		<div>&nbsp;</div>
 	</div>
 </template>
-
-
 
 <template name="meetingItem">
 <div class="panel panel-default">

@@ -1,5 +1,6 @@
 Template.home.helpers({
 	task: function() {
+		/* return a list of tasks managed by currentUser */
 		var userId = Meteor.userId();
 		if(userId) {
 			var tasks = Tasks.find({ "managers.id": userId, state: false });
@@ -7,7 +8,7 @@ Template.home.helpers({
 		}
 	},
 	daysLeft: function() {
-		/* login status check */
+		/* return number of days left for each task */
 		var userId = Meteor.userId();
 		if(userId) {
 			/* extract task obj by task id */
@@ -26,6 +27,7 @@ Template.home.helpers({
 		}
 	},
 	userInfo: function() {
+		/* return user profile for dashboard display */
 		userId = Meteor.userId();
 		if(userId) {
 			var info = Profiles.findOne({ user_id: userId });
@@ -33,6 +35,7 @@ Template.home.helpers({
 		}
 	},
 	project: function() {
+		/* return list of projects involved by currentUser */
 		var userId = Meteor.userId();
 		if(userId) {
 			var projList = Projects.find({ "members.id": { $in: [userId] } });
@@ -43,6 +46,7 @@ Template.home.helpers({
 
 Template.projectSummary.helpers({
 	projProgress: function() {
+		/* return progress by calculating the number of finished task over total tasks */
 		var userId = Meteor.userId();
 		if(userId) {
 			var completedTasks = Tasks.find({ project_id: this._id, state: true }).count();
@@ -58,6 +62,7 @@ Template.home.events({
 	'click #addProj': function(evt) {
 		var userId = Meteor.userId();
 		if(userId) {
+			/* Go to project page and display project adding form by setting session to true */
 			Session.set('addingProj', true);
 			Router.go('/project');
 		}

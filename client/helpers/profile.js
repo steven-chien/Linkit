@@ -9,6 +9,7 @@ Template.profile.helpers({
 	isCurrentUser: function() {
 		var userId = Meteor.userId();
 		if(userId) {
+			/* determine if the profile belongs to currently logged in user */
 			var targetId = Router.current().data();
 			if(userId==targetId)
 				return true;

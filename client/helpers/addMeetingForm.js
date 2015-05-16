@@ -5,7 +5,7 @@ Template.addMeetingForm.helpers({
 		if(!participants)
 			participants = [];
 
-		/* create manager name list */
+		/* create participant name list */
 		var participantList = [];
 		for(var i=0; i<participants.length; i++) {
 			var id = Profiles.findOne({ user_id: participants[i] });
@@ -34,8 +34,8 @@ Template.addMeetingForm.events({
 	'click #addManager': function(evt) {
 		var userId = Meteor.userId();
 		if(userId) {
-			/* extract manager id from form for searching */
-			var managerId = evt.target.id;
+			/* extract  id from form for searching */
+			var participantId = evt.target.id;
 
 			/* get current route */
 			var currentRoute = Router.current().location.get().path;
@@ -47,11 +47,11 @@ Template.addMeetingForm.events({
 				participantList = [];
 
 			/* if member does not exist on project list, he can not be assigned a task */
-			if(participantList.indexOf(managerId)==-1) {
-				participantList.push(managerId);
+			if(participantList.indexOf(participantId)==-1) {
+				participantList.push(participantId);
 			}
 			else {
-				var index = participantList.indexOf(managerId);
+				var index = participantList.indexOf(participantId);
 				participantList.splice(index, 1);
 			}
 

@@ -5,6 +5,7 @@ Template.overview.helpers({
 			Meteor.subscribe('recentFriends');
 			var recentFriends = RecentFriends.find({ user_id: userId });
 			var friendList = [];
+			/* create a list of id of recently added friends */
 			recentFriends.forEach(function(friends) {
 				friendList.push(friends.friend_id);
 			});

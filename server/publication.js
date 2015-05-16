@@ -1,7 +1,3 @@
-Meteor.publish('myUser', function() {
-	return MyUsers.find();
-});
-
 Meteor.publish('Profiles', function() {
 	if(this.userId) {
 		var userProfile = Profiles.findOne({ user_id: this.userId });

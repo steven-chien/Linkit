@@ -8,16 +8,18 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
+
 				<a class="navbar-brand-center navbar-brand" href="/">
 					<img src="/icons/logo_(50X50).png" height="30" width="68">
 				</a>
-				</div>
+			</div>
 				
-				<div id="navbar" class="navbar-collapse collapse">
-					<ul class="nav navbar-nav">
-						{{> navItems}}
-					</ul>
-			</div><!--/.nav-collapse -->
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+				{{> navItems}}
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
 		</div>
 	</nav>
 </template>
@@ -26,22 +28,26 @@
 	<li class="{{ activateTab 'Profile' }}">
 		<a href="/profile/{{myUserId}}">Profile</a>
 	</li>
+
 	<li class="{{ activateTab 'link' }}">
 		<a href="/link/overview">Linkitter List</a>
 	</li>
+
 	<li class="{{ activateTab 'project' }}">
 		<a href="/project">Project</a>
 	</li>
 </template>
 
 <template name='list_nav'>
-  <li role="presentation" class="{{ activateTab 'Overview' }}">
-    <a href="/link/overview">Overview</a>
-  </li>
-  <li role="presentation" class="{{ activateTab 'linkitterList' }}">
-    <a href="/link/linkitterlist">LINKITer</a>
-  </li>
-  <li role="presentation" class="{{ activateTab 'addFriend' }}">
-    <a href="{{addfriend}}">Add LINKITer</a>
-  </li>
+	<li role="presentation" class="{{ activateTab 'Overview' }}">
+		<a href="/link/overview">Overview</a>
+	</li>
+
+	<li role="presentation" class="{{ activateTab 'linkitterList' }}">
+		<a href="/link/linkitterlist">LINKITer</a>
+	</li>
+
+	<li role="presentation" class="{{ activateTab 'addFriend' }}">
+		<a href="{{addfriend}}">Add LINKITer</a>
+	</li>
 </template>
