@@ -35,15 +35,3 @@ Meteor.publish('Tasks', function() {
 		return tasks;
 	}
 });
-
-Meteor.publish('pmtasks', function() {
-	return pmtasks.find();
-});
-
-Meteor.publish('pmmeetings', function() {
-	return pmmeetings.find();
-});
-
-Meteor.publish('pmprojects', function() {
-	return pmprojects.find();
-});
