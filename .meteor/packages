@@ -4,3 +4,4 @@ iron:router
 accounts-google
 accounts-ui
 matteodem:easy-search
+http
