@@ -1,11 +1,7 @@
 <template name="projectList">
 	<div class="container">
 		Your Projects:
-		{{#each selfProject}}
-			{{> projectDetails}}
-		{{/each}}
-		Projects you are in:
-		{{#each otherProject}}
+		{{#each projectList}}
 			{{> projectDetails}}
 		{{/each}}
 		<hr>
@@ -30,7 +26,6 @@
 		<div>&nbsp;</div>
 	</div>
 </template>
-
 
 <template name="projectDetails">
 	<ul class="list-group">
@@ -68,7 +63,7 @@
 						<img src="/images/people3.png" width="50" height="50" />
 						<img src="/images/people4.png" width="50" height="50" /> -->
 						{{#each members}}
-						<li><a href="/profile/{{id}}">{{name}}</a></li>
+						<li><a href="/profile/{{id}}">{{name}} {{#if isOwner}}(Owner){{/if}}</a></li>
 						{{/each}}
 					</td>
 				</tr>

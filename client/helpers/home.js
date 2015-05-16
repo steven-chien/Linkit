@@ -47,7 +47,7 @@ Template.projectSummary.helpers({
 		if(userId) {
 			var completedTasks = Tasks.find({ project_id: this._id, state: true }).count();
 			var totalTasks = Tasks.find({ project_id: this._id }).count();
-			var progress = completedTasks / totalTasks * 100;
+			var progress = Math.round(completedTasks / totalTasks * 100);
 			console.log(completedTasks+' '+totalTasks+' '+progress);
 			return progress+'%';
 		}

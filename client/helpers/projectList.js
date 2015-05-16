@@ -9,19 +9,11 @@ Template.projectList.helpers({
 		if(state!=true)
 			return true;
 	},
-	selfProject: function() {
-		var userId = Meteor.userId();
-		if(userId) {
-			/* extract projects user created */
-			var projList = Projects.find({ creator: userId });
-			return projList;
-		}
-	},
-	otherProject: function() {
+	projectList: function() {
 		var userId = Meteor.userId();
 		if(userId) {
 			/* extract projects user participated in */
-			var projList = Projects.find({ creator: { $ne: userId }, "members.id": { $in: [userId] } });
+			var projList = Projects.find({ "members.id": { $in: [userId] } });
 			return projList;
 		}
 	}
@@ -73,9 +65,16 @@ Template.projectDetails.helpers({
 		if(userId) {
 			var completedTasks = Tasks.find({ project_id: this._id, state: true }).count();
 			var totalTasks = Tasks.find({ project_id: this._id }).count();
-			var progress = completedTasks / totalTasks * 100;
+			var progress = Math.round(completedTasks / totalTasks * 100);
 			console.log(completedTasks+' '+totalTasks+' '+progress);
 			return progress+'%';
+		}
+	},
+	isOwner: function() {
+		var userId = Meteor.userId();
+		if(userId) {
+			if(this.id==userId)
+				return true;
 		}
 	}
 });

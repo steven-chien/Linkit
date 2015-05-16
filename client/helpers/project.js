@@ -15,7 +15,7 @@ Template.project.helpers({
 		var projectId = Router.current().data();
 		var completedTasks = Tasks.find({ project_id: projectId, state: true }).count();
 		var totalTasks = Tasks.find({ project_id: projectId }).count();
-		var progress = completedTasks / totalTasks * 100;
+		var progress = Math.round(completedTasks / totalTasks * 100);
 		console.log(completedTasks+' '+totalTasks+' '+progress);
 		return progress+'%';
 	}
