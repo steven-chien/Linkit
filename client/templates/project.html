@@ -57,11 +57,16 @@
 			{{> taskList}}
 			<div class="list-group-item active">
 				<span class="badge">
-					<a href="/addmeeting"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+					<a href="#" id="addMeeting"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
 				</span>
 				Meetings
 			</div>
-			{{> meetinglist}}
+			<div class="list-group-item">
+			{{#if addingMeeting}}
+				{{> addMeetingForm}}
+			{{/if}}
+			</div>
+			<!--{{> meetinglist}}-->
 		</ul>
 		<!-- <div class="btn-group btn-group-justified" role="group" aria-label="...">
 		<div class="btn-group" role="group">
@@ -74,12 +79,6 @@
 </template>
 
 
-
-<template name="meetinglist">
-    {{#each meetings}}
-      {{> meetingItem}}
-    {{/each}}
-</template>
 
 <template name="meetingItem">
 <div class="panel panel-default">

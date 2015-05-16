@@ -11,6 +11,12 @@ Template.project.helpers({
 		if(addingTaskState)
 			return true;
 	},
+	addingMeeting: function() {
+		var addingMeetingState = Session.get('addingMeeting');
+		console.log('add meeting: '+Session.get('addingMeeting'));
+		if(addingMeetingState)
+			return true;
+	},
 	projProgress: function() {
 		var projectId = Router.current().data();
 		var completedTasks = Tasks.find({ project_id: projectId, state: true }).count();
@@ -26,6 +32,12 @@ Template.project.events({
 		var userId = Meteor.userId();
 		if(userId) {
 			Session.set('addingTask', true);
+		}
+	},
+	'click #addMeeting': function(evt) {
+		var userId = Meteor.userId();
+		if(userId) {
+			Session.set('addingMeeting', true);
 		}
 	}
 });
