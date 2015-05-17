@@ -27,6 +27,69 @@ Template.addMeetingForm.helpers({
 
 			return members;
 		}
+	},
+	printCalendar: function() {
+		var userId = Meteor.userId();
+
+		/* now denote now, today is for adjustment */
+		var now = new Date();
+		var today = new Date(now);
+
+		/* table contains table HTML for return */
+		var table;
+		var busyList = [];
+
+		if(userId) {
+			/* get participant list and query for busy free periods */
+			var participantList = Session.get('meetingParticipants');
+			if(participantList.length>0) {
+				/* call server for busy free periods */
+				Meteor.call('getOccupiedList', participantList, function(error, data) {
+					console.log('calling server for busy free...');
+					if(!error) {
+						console.log('method: '+busyList.length);
+						busyList = data;
+					}
+					else {
+						console.log(String(error));
+					}
+				});
+
+				/* construct table */
+				table = '<table class="table table-condensed table-bordered">'
+				
+				/* construct table head */
+				table += '<thead>'
+				table += '<tr>'
+				table += '<th>Time</th>'
+				for(var i=0; i<14; i++) {
+					today.setTime(now.getTime() + i * 24 * 3600 * 1000);
+					table += '<th>'+today.getDate()+'</th>'
+				}
+				table += '</tr>';
+				table += '</thead>';
+
+				/* construct table body */
+				table += '<tbody>';
+				for(var i=0; i<24; i++) {
+					/* table row, representing hours */
+					table += '<tr>';
+					table += '<th scope="row">'+i+'</th>';
+
+					/* table cell, representing hour of day */
+					today.setHours(now.getHours() + i);
+					for(var j=0; j<14; j++) {
+						today.setTime(today.getTime() + j * 24 * 3600 * 1000);
+						table += '<td class="success" date="'+today.getDate()+'/'+today.getMonth()+'" startTime="'+i+'" endTime="'+parseInt(i+1)+'" onclick=checked(this)></td>';
+					}
+					table += '</tr>';
+				}
+
+				table += '</tbody>';
+				table += '</table>';
+			}
+			return table;
+		}
 	}
 });
 

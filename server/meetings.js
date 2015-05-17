@@ -29,7 +29,7 @@ Meteor.methods({
 				}
 				catch(error) {
 					console.log(error);
-					return;
+					return String(error);
 				}
 
 				/* get free busy for each and every calendars by HTTP POST */
@@ -56,7 +56,9 @@ Meteor.methods({
 				catch (error) {
 					console.log(returnValue);
 					console.log(error);
+					return String(error);
 				}
+				console.log(returnValue);
 
 				/* push each and ever free busy obj into list */
 				for(var j=0; j<calendarIds.length; j++) {
@@ -67,6 +69,7 @@ Meteor.methods({
 				}
 			}
 			console.log(busyList);
+			return busyList;
 		}
 	}
 });
