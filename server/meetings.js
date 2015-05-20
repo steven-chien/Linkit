@@ -69,7 +69,31 @@ Meteor.methods({
 				}
 			}
 			console.log(busyList);
-			return busyList;
+
+			var busyMap = [];
+			for(var i=0; i<14; i++) {
+				busyMap[i] = [];
+				for(var j=0; j<24; j++) {
+					busyMap[i][j] = 0;
+				}
+			}
+
+			for(var i=0; i<busyList.length; i++) {
+				var now = new Date(startDate);
+				console.log(now);
+				now.setMinutes(0);
+				for(var j=0; j<14; j++) {
+					for(var k=0; k<24; k++) {
+						if(now.getTime()>=Date.parse(busyList[i].start) && now.getTime()<=Date.parse(busyList[i].end))
+							busyMap[j][k] = 1;
+						now.setHours(now.getHours()+1);
+					}
+				}
+			}
+
+			console.log(busyMap);
+			//return busyList;
+			return busyMap;
 		}
 	}
 });

@@ -37,24 +37,12 @@ Template.addMeetingForm.helpers({
 
 		/* table contains table HTML for return */
 		var table;
-		var busyList = [];
+		var busyList = Session.get('calList');;
 
 		if(userId) {
 			/* get participant list and query for busy free periods */
 			var participantList = Session.get('meetingParticipants');
 			if(participantList.length>0) {
-				/* call server for busy free periods */
-				Meteor.call('getOccupiedList', participantList, function(error, data) {
-					console.log('calling server for busy free...');
-					if(!error) {
-						console.log('method: '+busyList.length);
-						busyList = data;
-					}
-					else {
-						console.log(String(error));
-					}
-				});
-
 				/* construct table */
 				table = '<table class="table table-condensed table-bordered">'
 				
@@ -71,16 +59,19 @@ Template.addMeetingForm.helpers({
 
 				/* construct table body */
 				table += '<tbody>';
+				today.setMinutes(0);
 				for(var i=0; i<24; i++) {
 					/* table row, representing hours */
 					table += '<tr>';
 					table += '<th scope="row">'+i+'</th>';
 
-					/* table cell, representing hour of day */
-					today.setHours(now.getHours() + i);
 					for(var j=0; j<14; j++) {
 						today.setTime(today.getTime() + j * 24 * 3600 * 1000);
-						table += '<td class="success" date="'+today.getDate()+'/'+today.getMonth()+'" startTime="'+i+'" endTime="'+parseInt(i+1)+'" onclick=checked(this)></td>';
+						if(busyList[j][i]!=0) {
+							table += '<td class="success" date="'+today.getDate()+'/'+today.getMonth()+'" startTime="'+i+'" endTime="'+parseInt(i+1)+'" onclick=checked(this)></td>';
+						}
+						else
+							table += '<td date="'+today.getDate()+'/'+today.getMonth()+'" startTime="'+i+'" endTime="'+parseInt(i+1)+'" onclick=checked(this)></td>';
 					}
 					table += '</tr>';
 				}
@@ -121,11 +112,25 @@ Template.addMeetingForm.events({
 			/* update session */
 			Session.set('meetingParticipants', participantList);
 			console.log(participantList);
+				/* call server for busy free periods */
+				Meteor.call('getOccupiedList', participantList, function(error, data) {
+					console.log('calling server for busy free...');
+					if(!error) {
+						Session.set('calList', data);
+						//busyList = data;
+					}
+					else {
+						console.log(String(error));
+					}
+				});
+
+
 		}
 	},
 	'click #cancel': function(evt) {
 		/* hide task adding panel */
 		Session.set('addingMeeting', false);
 		Session.set('meetingParticipants', null);
+		Session.set('calList', null);
 	}
 });
