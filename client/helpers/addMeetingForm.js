@@ -68,10 +68,10 @@ Template.addMeetingForm.helpers({
 					for(var j=0; j<14; j++) {
 						today.setTime(today.getTime() + j * 24 * 3600 * 1000);
 						if(busyList[j][i]!=0) {
-							table += '<td class="success" date="'+today.getDate()+'/'+today.getMonth()+'" startTime="'+i+'" endTime="'+parseInt(i+1)+'" onclick=checked(this)></td>';
+							table += '<td></td>';
 						}
 						else
-							table += '<td date="'+today.getDate()+'/'+today.getMonth()+'" startTime="'+i+'" endTime="'+parseInt(i+1)+'" onclick=checked(this)></td>';
+							table += '<td class="success" datetime="'+today.getTime()+'"></td>';
 					}
 					table += '</tr>';
 				}
@@ -85,6 +85,13 @@ Template.addMeetingForm.helpers({
 });
 
 Template.addMeetingForm.events({
+	'click .success': function(evt) {
+		var userId = Meteor.userId();
+		if(userId) {
+			var selectedDateTime = evt.target.getAttribute('datetime');
+			console.log(selectedDateTime);
+		}
+	},
 	'click #addManager': function(evt) {
 		var userId = Meteor.userId();
 		if(userId) {
@@ -117,7 +124,6 @@ Template.addMeetingForm.events({
 					console.log('calling server for busy free...');
 					if(!error) {
 						Session.set('calList', data);
-						//busyList = data;
 					}
 					else {
 						console.log(String(error));

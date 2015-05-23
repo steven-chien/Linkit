@@ -40,8 +40,8 @@ Meteor.methods({
 						'Content-Type': 'application/json' 
 					},
 					'data': {
-						'timeMin': (new Date(startDate)).toISOString(),
-						'timeMax': (new Date(endDate)).toISOString(),
+						'timeMin': startDate.toISOString(),
+						'timeMax': endDate.toISOString(),
 						'items': calendarIds,
 						'timeZone': 'HKT',
 					}
@@ -80,12 +80,20 @@ Meteor.methods({
 
 			for(var i=0; i<busyList.length; i++) {
 				var now = new Date(startDate);
+				var start = Date.parse(busyList[i].start);
+				var end = Date.parse(busyList[i].end);
 				console.log(now);
+				now.setHours(0);
 				now.setMinutes(0);
+				now.setSeconds(0);
+				now.setUTCMilliseconds(0);
 				for(var j=0; j<14; j++) {
 					for(var k=0; k<24; k++) {
-						if(now.getTime()>=Date.parse(busyList[i].start) && now.getTime()<=Date.parse(busyList[i].end))
+						if(now.getTime()>=start && now.getTime()<=end) {
+							if(now.getDay()==4)
+								console.log(now);
 							busyMap[j][k] = 1;
+						}
 						now.setHours(now.getHours()+1);
 					}
 				}
