@@ -2,7 +2,6 @@ Template.byQRCode.helpers({
 	QRCodeUrl: function() { 
 		var userId = Meteor.userId();
 		if(userId) { 
-			console.log("http://chart.apis.google.com/chart?cht=qr&chl="+window.location.origin+ "/link/addFriend?id="+userId+"&device=QRCode&chs=400x400");
 			/* return url of QR Code by Google charts */
 			return 'http://chart.apis.google.com/chart?cht=qr&chl='+window.location.origin+'/link/addFriend?id='+userId+'&device=QRCode&chs=400x400';
 		}
